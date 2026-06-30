@@ -1,10 +1,11 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 // ─────────────────────────────────────────────────────────────
 // MODIFICA QUI: imposta l'immagine dello studio (foto del team,
@@ -30,9 +31,9 @@ const values = [
 export function StudioSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context((self) => {
-      const q = self.selector!;
+  useGSAP(
+    () => {
+      const q = gsap.utils.selector(sectionRef);
 
       // Header: etichetta + titolo
       gsap.from(q("[data-animate='header'] > *"), {
@@ -97,10 +98,9 @@ export function StudioSection() {
           start: "top 85%",
         },
       });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+    },
+    { scope: sectionRef }
+  );
 
   return (
     <section
