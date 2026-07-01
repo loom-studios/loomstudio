@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { useContactModal } from "@/components/contact/contact-modal-provider";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -100,6 +101,7 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
 
 export function WorksSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { open } = useContactModal();
 
   useGSAP(
     () => {
@@ -158,13 +160,14 @@ export function WorksSection() {
             </h2>
           </div>
 
-          <a
-            href="#contatti"
+          <button
+            type="button"
+            onClick={open}
             className="header-item inline-flex items-center gap-2 text-sm text-foreground/70 hover:text-foreground transition-colors group shrink-0"
           >
             Inizia il tuo progetto
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </a>
+          </button>
         </div>
 
         {/* Grid */}

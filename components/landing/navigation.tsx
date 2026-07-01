@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { useContactModal } from "@/components/contact/contact-modal-provider";
 
 const navLinks = [
   { name: "Studio", href: "#studio" },
@@ -15,6 +16,7 @@ const navLinks = [
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { open } = useContactModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,6 +75,7 @@ export function Navigation() {
           <div className="hidden md:flex items-center gap-4">
             <Button
               size="sm"
+              onClick={open}
               className={`bg-foreground hover:bg-foreground/90 text-background rounded-full transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
             >
               Inizia un progetto
@@ -133,9 +136,12 @@ export function Navigation() {
           style={{ transitionDelay: isMobileMenuOpen ? "300ms" : "0ms" }}
           >
 
-            <Button 
+            <Button
               className="flex-1 bg-foreground text-background rounded-full h-14 text-base"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                open();
+              }}
             >
               Inizia un progetto
             </Button>

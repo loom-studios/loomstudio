@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight, Check, Plus } from "lucide-react";
+import { useContactModal } from "@/components/contact/contact-modal-provider";
 
 const plans = [
   {
@@ -90,6 +91,7 @@ const plans = [
 
 export function PricingSection() {
   const [withMaintenance, setWithMaintenance] = useState<Record<string, boolean>>({});
+  const { open } = useContactModal();
 
   const toggleMaintenance = (name: string) =>
     setWithMaintenance((prev) => ({ ...prev, [name]: !prev[name] }));
@@ -200,6 +202,7 @@ export function PricingSection() {
 
                 {/* CTA */}
                 <button
+                  onClick={open}
                   className={`w-full py-4 flex items-center justify-center gap-2 text-sm font-medium transition-all group ${
                     plan.popular
                       ? "bg-foreground text-primary-foreground hover:bg-foreground/90"

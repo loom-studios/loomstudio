@@ -3,6 +3,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedWave } from "./animated-wave";
+import { useContactModal } from "@/components/contact/contact-modal-provider";
 
 const footerLinks = {
   Navigazione: [
@@ -26,6 +27,8 @@ const socialLinks = [
 ];
 
 export function FooterSection() {
+  const { open } = useContactModal();
+
   return (
     <footer className="relative border-t border-foreground/10">
       {/* Sfondo onda animata */}
@@ -53,7 +56,10 @@ export function FooterSection() {
               </p>
 
               {/* CTA */}
-              <Button className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-6 mb-8">
+              <Button
+                onClick={open}
+                className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-6 mb-8"
+              >
                 Inizia un progetto
               </Button>
 
