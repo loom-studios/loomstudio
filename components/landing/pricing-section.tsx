@@ -214,14 +214,6 @@ export function PricingSection() {
           })}
         </div>
 
-        {/* Bottom Note */}
-        <p className="mt-12 text-center text-sm text-muted-foreground">
-          Tutti i pacchetti includono dominio configurato, certificato HTTPS e consegna del
-          codice.{" "}
-          <a href="#" className="underline underline-offset-4 hover:text-foreground transition-colors">
-            Confronta tutti i servizi
-          </a>
-        </p>
       </div>
     </section>
   );

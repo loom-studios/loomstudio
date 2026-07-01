@@ -22,28 +22,28 @@ interface Work {
 
 const works: Work[] = [
   {
-    title: "Aurora Beauty",
-    category: "Branding · E-commerce",
+    title: ".titan",
+    category: "Gym brand",
     year: "2025",
-    image: "",
+    image: "/gym.jpg",
   },
   {
-    title: "Nordic Coffee",
-    category: "Web Design · Sviluppo",
-    year: "2024",
-    image: "",
+    title: "soho",
+    category: "Fashion design",
+    year: "2025",
+    image: "/soho.jpg",
   },
   {
-    title: "Studio Vela",
-    category: "Branding · Sito web",
-    year: "2024",
-    image: "",
+    title: "kerbites",
+    category: "Fast food",
+    year: "2026",
+    image: "/burger.jpg",
   },
   {
-    title: "Mono Architects",
-    category: "Web Design · Sviluppo",
-    year: "2023",
-    image: "",
+    title: ".ok-",
+    category: "Energy drink",
+    year: "2026",
+    image: "/ok%20drink.jpg",
   },
 ];
 
@@ -56,13 +56,13 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
     >
       {/* Cover */}
       <div className="work-cover relative aspect-[4/3] border border-foreground/10 overflow-hidden bg-foreground/[0.03] mb-6">
-        <div className="work-media absolute inset-0 scale-110">
+        <div className="work-media absolute inset-0">
           {work.image ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={work.image}
               alt={work.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
           ) : (
             // Placeholder: sostituiscilo impostando `image` nei dati in alto
@@ -129,26 +129,6 @@ export function WorksSection() {
           trigger: q("[data-animate='grid']"),
           start: "top 75%",
         },
-      });
-
-      // Parallax sul media di ogni copertina
-      q("[data-animate='card']").forEach((card: Element) => {
-        const media = card.querySelector(".work-media");
-        if (!media) return;
-        gsap.fromTo(
-          media,
-          { yPercent: -8 },
-          {
-            yPercent: 8,
-            ease: "none",
-            scrollTrigger: {
-              trigger: card,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-          }
-        );
       });
     },
     { scope: sectionRef }

@@ -7,11 +7,8 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-// ─────────────────────────────────────────────────────────────
-// MODIFICA QUI: imposta l'immagine dello studio (foto del team,
-// dello spazio di lavoro, ecc). Lascia `image: ""` per il placeholder.
-// ─────────────────────────────────────────────────────────────
-const studioImage = "";
+
+const studioImage = "/studiochisiamo.jpg";
 
 const values = [
   {
@@ -62,7 +59,7 @@ export function StudioSection() {
       });
 
       // Parallax sull'immagine durante lo scroll
-      gsap.to(q("[data-animate='image'] img, [data-animate='image'] .placeholder"), {
+      gsap.to(q("[data-animate='image'] .placeholder"), {
         yPercent: -12,
         ease: "none",
         scrollTrigger: {
@@ -121,7 +118,7 @@ export function StudioSection() {
         </div>
 
         {/* Main content */}
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-24 items-start">
           {/* Image */}
           <div data-animate="image">
             <div className="relative aspect-[4/5] border border-foreground/10 overflow-hidden bg-foreground/[0.03]">
@@ -130,7 +127,7 @@ export function StudioSection() {
                 <img
                   src={studioImage}
                   alt="Loom Studio"
-                  className="w-full h-full object-cover scale-110"
+                  className="w-full h-full object-cover"
                 />
               ) : (
                 // Placeholder: sostituiscilo impostando `studioImage` in alto

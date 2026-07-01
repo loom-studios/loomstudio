@@ -2,22 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// ─────────────────────────────────────────────────────────────
-// MODIFICA QUI: per ogni step imposta l'asset (immagine/video/gif)
-// da mostrare a destra. Lascia `asset: ""` per il placeholder.
-//   - asset:  percorso del file (es. "/process/step-1.png") o URL
-//   - assetType: "image" | "video"
-//   - assetAlt:  testo alternativo (per le immagini)
-// ─────────────────────────────────────────────────────────────
-type StepAssetType = "image" | "video";
-
 interface Step {
   number: string;
   title: string;
   description: string;
-  asset: string;
-  assetType: StepAssetType;
-  assetAlt: string;
 }
 
 const steps: Step[] = [
@@ -25,25 +13,16 @@ const steps: Step[] = [
     number: "01",
     title: "Scoperta & Strategia",
     description: "Analizziamo il progetto, il mercato e definiamo struttura, contenuti e direzione visiva.",
-    asset: "",
-    assetType: "image",
-    assetAlt: "Scoperta & Strategia",
   },
   {
     number: "02",
     title: "Design & Sviluppo",
     description: "Progettiamo l'esperienza e la trasformiamo in un prodotto digitale funzionale e ad alte prestazioni.",
-    asset: "",
-    assetType: "image",
-    assetAlt: "Design & Sviluppo",
   },
   {
     number: "03",
     title: "Lancio & Ottimizzazione",
     description: "Portiamo il progetto online, lo ottimizziamo e ne miglioriamo continuamente performance e risultati.",
-    asset: "",
-    assetType: "image",
-    assetAlt: "Lancio & Ottimizzazione",
   },
 ];
 
@@ -148,43 +127,17 @@ export function HowItWorksSection() {
             ))}
           </div>
 
-          {/* Asset display (placeholder until you set `asset` above) */}
-          <div className="lg:sticky lg:top-32 self-start">
-            <div className="relative aspect-[4/3] border border-background/10 overflow-hidden bg-background/[0.03]">
-              {steps.map((step, index) => (
-                <div
-                  key={step.number}
-                  className={`absolute inset-0 transition-opacity duration-700 ${
-                    activeStep === index ? "opacity-100" : "opacity-0 pointer-events-none"
-                  }`}
-                >
-                  {step.asset ? (
-                    step.assetType === "video" ? (
-                      <video
-                        src={step.asset}
-                        className="w-full h-full object-cover"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      />
-                    ) : (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={step.asset}
-                        alt={step.assetAlt}
-                        className="w-full h-full object-cover"
-                      />
-                    )
-                  ) : (
-                    // Placeholder: sostituiscilo impostando `asset` nei dati in alto
-                    <div className="w-full h-full flex flex-col items-center justify-center gap-3 text-background/30">
-                      <span className="font-display text-5xl text-background/20">{step.number}</span>
-                      <span className="text-xs font-mono tracking-wide">Placeholder asset</span>
-                    </div>
-                  )}
-                </div>
-              ))}
+          {/* Video presentazione studio */}
+          <div className="lg:sticky lg:top-32 self-center">
+            <div className="relative border border-background/10 overflow-hidden bg-background/[0.03]">
+              <video
+                src="/presentazionestudio.mp4"
+                className="w-full h-auto object-contain"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
             </div>
           </div>
         </div>
