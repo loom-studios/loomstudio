@@ -26,25 +26,25 @@ const works: Work[] = [
     title: ".titan",
     category: "Gym brand",
     year: "2025",
-    image: "/gym.jpg",
+    image: "/gym.webp",
   },
   {
     title: "soho",
     category: "Fashion design",
     year: "2025",
-    image: "/soho.jpg",
+    image: "/soho.webp",
   },
   {
     title: "kerbites",
     category: "Fast food",
     year: "2026",
-    image: "/burger.jpg",
+    image: "/burger.webp",
   },
   {
     title: ".ok-",
     category: "Energy drink",
     year: "2026",
-    image: "/ok%20drink.jpg",
+    image: "/ok-drink.webp",
   },
 ];
 
@@ -63,6 +63,8 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
             <img
               src={work.image}
               alt={work.title}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
           ) : (

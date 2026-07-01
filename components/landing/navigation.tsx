@@ -49,8 +49,12 @@ export function Navigation() {
           {/* Logo */}
           <a href="#" className="flex items-center shrink-0">
             <img
-              src="/logo loom studio transparent.png"
+              src="/logo.webp"
               alt="Loom Studio"
+              width={1774}
+              height={887}
+              decoding="async"
+              fetchPriority="high"
               className={`w-auto transition-all duration-500 ${
                 isScrolled ? "h-12" : "h-18"
               }`}

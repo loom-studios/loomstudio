@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 
-const studioImage = "/studiochisiamo.jpg";
+const studioImage = "/studiochisiamo.webp";
 
 const values = [
   {
@@ -127,6 +127,8 @@ export function StudioSection() {
                 <img
                   src={studioImage}
                   alt="Loom Studio"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               ) : (

@@ -49,8 +49,12 @@ export function FooterSection() {
             <div className="max-w-xs">
               <a href="#" className="inline-flex items-center mb-6">
                 <img
-                  src="/logo loom studio transparent.png"
+                  src="/logo.webp"
                   alt="Loom Studio"
+                  width={1774}
+                  height={887}
+                  loading="lazy"
+                  decoding="async"
                   className="h-16 w-auto"
                 />
               </a>

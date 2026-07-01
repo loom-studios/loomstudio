@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   applicationName: "Loom Studio",
   metadataBase: new URL("https://loom-studio.it"), // Sostituisci con il tuo dominio
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
   openGraph: {
     title: "Loom Studio | Agenzia di Web Design",
@@ -72,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="it">
       <body className={`${instrumentSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ContactModalProvider>
           <LegalModalProvider>

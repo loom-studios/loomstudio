@@ -30,6 +30,27 @@ export function HowItWorksSection() {
   const [activeStep, setActiveStep] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Only load + play the presentation video once it scrolls into view, and
+  // pause it when it leaves, so the 1.3MB file never competes with the initial
+  // page load.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -131,12 +152,15 @@ export function HowItWorksSection() {
           <div className="lg:sticky lg:top-32 self-center">
             <div className="relative border border-background/10 overflow-hidden bg-background/[0.03]">
               <video
+                ref={videoRef}
                 src="/presentazionestudio.mp4"
+                width={700}
+                height={380}
                 className="w-full h-auto object-contain"
-                autoPlay
                 muted
                 loop
                 playsInline
+                preload="none"
               />
             </div>
           </div>

@@ -15,6 +15,8 @@ export function AnimatedTetrahedron() {
 
     const chars = "░▒▓█▀▄▌▐│─┤├┴┬╭╮╰╯";
     let time = 0;
+    let running = false;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -159,14 +161,37 @@ export function AnimatedTetrahedron() {
       });
 
       time += 0.015;
-      frameRef.current = requestAnimationFrame(render);
+      if (running) frameRef.current = requestAnimationFrame(render);
     };
 
-    render();
+    const start = () => {
+      if (running) return;
+      running = true;
+      render();
+    };
+    const stop = () => {
+      running = false;
+      cancelAnimationFrame(frameRef.current);
+    };
+
+    let observer: IntersectionObserver | null = null;
+    if (prefersReduced) {
+      render(); // draw a single static frame, no animation loop
+    } else {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) start();
+          else stop();
+        },
+        { threshold: 0 }
+      );
+      observer.observe(canvas);
+    }
 
     return () => {
       window.removeEventListener("resize", resize);
       cancelAnimationFrame(frameRef.current);
+      observer?.disconnect();
     };
   }, []);
 
