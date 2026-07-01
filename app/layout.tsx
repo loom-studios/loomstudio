@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from 'next/font/google'
 import { ContactModalProvider } from '@/components/contact/contact-modal-provider'
+import { LegalModalProvider } from '@/components/legal/legal-modal-provider'
 import './globals.css'
 
 const instrumentSans = Instrument_Sans({ 
@@ -43,6 +44,11 @@ export const metadata: Metadata = {
   publisher: "Loom Studio",
   applicationName: "Loom Studio",
   metadataBase: new URL("https://loom-studio.it"), // Sostituisci con il tuo dominio
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "Loom Studio | Agenzia di Web Design",
     description:
@@ -69,7 +75,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${instrumentSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ContactModalProvider>
-          {children}
+          <LegalModalProvider>
+            {children}
+          </LegalModalProvider>
         </ContactModalProvider>
       </body>
     </html>

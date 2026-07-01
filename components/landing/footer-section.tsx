@@ -4,8 +4,12 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedWave } from "./animated-wave";
 import { useContactModal } from "@/components/contact/contact-modal-provider";
+import { useLegalModal } from "@/components/legal/legal-modal-provider";
+import type { LegalKey } from "@/components/legal/legal-content";
 
-const footerLinks = {
+type FooterLink = { name: string; href?: string; legalKey?: LegalKey };
+
+const footerLinks: Record<string, FooterLink[]> = {
   Navigazione: [
     { name: "Studio", href: "#studio" },
     { name: "Servizi", href: "#servizi" },
@@ -14,9 +18,9 @@ const footerLinks = {
     { name: "Prezzi", href: "#prezzi" },
   ],
   Legale: [
-    { name: "Privacy", href: "#" },
-    { name: "Termini", href: "#" },
-    { name: "Cookie", href: "#" },
+    { name: "Privacy", legalKey: "privacy" },
+    { name: "Termini", legalKey: "termini" },
+    { name: "Cookie", legalKey: "cookie" },
   ],
 };
 
@@ -27,7 +31,8 @@ const socialLinks = [
 ];
 
 export function FooterSection() {
-  const { open } = useContactModal();
+  const { open: openContact } = useContactModal();
+  const { open: openLegal } = useLegalModal();
 
   return (
     <footer className="relative border-t border-foreground/10">
@@ -57,7 +62,7 @@ export function FooterSection() {
 
               {/* CTA */}
               <Button
-                onClick={open}
+                onClick={openContact}
                 className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-6 mb-8"
               >
                 Inizia un progetto
@@ -86,12 +91,22 @@ export function FooterSection() {
                   <ul className="space-y-4">
                     {links.map((link) => (
                       <li key={link.name}>
-                        <a
-                          href={link.href}
-                          className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-2"
-                        >
-                          {link.name}
-                        </a>
+                        {link.legalKey ? (
+                          <button
+                            type="button"
+                            onClick={() => openLegal(link.legalKey!)}
+                            className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-2"
+                          >
+                            {link.name}
+                          </button>
+                        ) : (
+                          <a
+                            href={link.href}
+                            className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-2"
+                          >
+                            {link.name}
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>

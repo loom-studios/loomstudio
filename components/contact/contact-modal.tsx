@@ -217,7 +217,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
                 {status === "error" && (
                   <p className="text-sm text-destructive">
                     Qualcosa è andato storto. Riprova o scrivici a
-                    loomstudio.it@gmail.com.
+                    info@loom-studio.it.
                   </p>
                 )}
 

@@ -156,60 +156,63 @@ export function PricingSection() {
         </div>
 
         {/* Maintenance table */}
-        <div className="max-w-2xl mx-auto mt-16">
-          <div className="text-center mb-6">
-            <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase block mb-2">
-              Manutenzione
-            </span>
-            <h3 className="font-display text-2xl md:text-3xl text-foreground">
-              Scegli come mantenere il sito
-            </h3>
-            <p className="text-sm text-muted-foreground mt-2 max-w-md mx-auto">
-              Piani mensili opzionali, disattivabili in ogni momento.
-            </p>
-          </div>
+        <div className="max-w-5xl mx-auto mt-16">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:gap-10">
+            {/* Header — stacked on mobile, aside on desktop */}
+            <div className="text-center lg:text-left mb-6 lg:mb-0 lg:w-52 lg:shrink-0 lg:pt-2">
+              <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase block mb-2">
+                Manutenzione
+              </span>
+              <h3 className="font-display text-xl md:text-2xl text-foreground">
+                Scegli come mantenere il sito
+              </h3>
+              <p className="text-xs text-muted-foreground mt-2 max-w-md mx-auto lg:mx-0">
+                Piani mensili opzionali, disattivabili in ogni momento.
+              </p>
+            </div>
 
-          <div className="relative overflow-x-auto">
-            <div className="grid grid-cols-[1.6fr_1fr_1fr_1fr] gap-px bg-foreground/10 min-w-[520px]">
-              {/* Header row */}
-              <div className="bg-background px-4 py-2.5 flex items-center">
-                <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-                  Cosa include
-                </span>
-              </div>
-              {maintenanceTiers.map((tier) => (
-                <div key={tier.name} className="bg-background px-4 py-2.5 text-center">
-                  <span className="block font-mono text-xs tracking-widest text-foreground uppercase">
-                    {tier.name}
-                  </span>
-                  <span className="block font-mono text-xs text-muted-foreground mt-1">
-                    €{tier.price}/mese
+            <div className="relative overflow-x-auto lg:flex-1">
+              <div className="grid grid-cols-[1.6fr_1fr_1fr_1fr] gap-px bg-foreground/10 min-w-[460px]">
+                {/* Header row */}
+                <div className="bg-background px-3 py-2 flex items-center">
+                  <span className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
+                    Cosa include
                   </span>
                 </div>
-              ))}
-
-              {/* Body rows */}
-              {maintenanceRows.map((row) => (
-                <div key={row.label} className="contents">
-                  <div className="bg-background px-4 py-2.5 flex items-center">
-                    <span className="text-sm text-muted-foreground">{row.label}</span>
+                {maintenanceTiers.map((tier) => (
+                  <div key={tier.name} className="bg-background px-3 py-2 text-center">
+                    <span className="block font-mono text-[10px] tracking-widest text-foreground uppercase">
+                      {tier.name}
+                    </span>
+                    <span className="block font-mono text-[10px] text-muted-foreground mt-0.5">
+                      €{tier.price}/mese
+                    </span>
                   </div>
-                  {row.values.map((value, i) => (
-                    <div
-                      key={i}
-                      className="bg-background px-4 py-2.5 flex items-center justify-center text-center"
-                    >
-                      {value === true ? (
-                        <Check className="w-4 h-4 text-foreground" />
-                      ) : value === false ? (
-                        <span className="text-muted-foreground/40">—</span>
-                      ) : (
-                        <span className="text-sm text-foreground">{value}</span>
-                      )}
+                ))}
+
+                {/* Body rows */}
+                {maintenanceRows.map((row) => (
+                  <div key={row.label} className="contents">
+                    <div className="bg-background px-3 py-2 flex items-center">
+                      <span className="text-xs text-muted-foreground">{row.label}</span>
                     </div>
-                  ))}
-                </div>
-              ))}
+                    {row.values.map((value, i) => (
+                      <div
+                        key={i}
+                        className="bg-background px-3 py-2 flex items-center justify-center text-center"
+                      >
+                        {value === true ? (
+                          <Check className="w-3.5 h-3.5 text-foreground" />
+                        ) : value === false ? (
+                          <span className="text-muted-foreground/40">—</span>
+                        ) : (
+                          <span className="text-xs text-foreground">{value}</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
