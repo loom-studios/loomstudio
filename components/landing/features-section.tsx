@@ -308,7 +308,7 @@ export function FeaturesSection() {
 
   return (
     <section
-      id="features"
+      id="servizi"
       ref={sectionRef}
       className="relative pt-48 pb-24 lg:pt-64 lg:pb-32"
     >

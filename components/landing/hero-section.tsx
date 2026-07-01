@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { AnimatedSphere } from "./animated-sphere";
@@ -11,11 +11,21 @@ const words = ["creare", "progettare", "innovare", "ispirare"];
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
+  const [barWidth, setBarWidth] = useState(0);
+  const wordRef = useRef<HTMLSpanElement>(null);
   const { open } = useContactModal();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  // Measure the current word so the underline bar matches its width and can
+  // transition smoothly between words instead of spanning the longest one.
+  useEffect(() => {
+    if (wordRef.current) {
+      setBarWidth(wordRef.current.offsetWidth);
+    }
+  }, [wordIndex]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -87,6 +97,7 @@ export function HeroSection() {
                 </span>
                 <span
                   key={wordIndex}
+                  ref={wordRef}
                   className="inline-flex absolute left-0 top-0"
                 >
                   {words[wordIndex].split("").map((char, i) => (
@@ -101,7 +112,10 @@ export function HeroSection() {
                     </span>
                   ))}
                 </span>
-                <span className="absolute -bottom-2 left-0 right-0 h-3 bg-foreground/10" />
+                <span
+                  className="absolute -bottom-2 left-0 h-3 bg-foreground/10 transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  style={{ width: barWidth }}
+                />
               </span>
             </span>
           </h1>
@@ -143,16 +157,16 @@ export function HeroSection() {
           isVisible ? "opacity-100" : "opacity-0"
         }`}
       >
-        <div className="flex gap-16 marquee whitespace-nowrap">
-          {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex gap-16">
+        <div className="flex w-max marquee whitespace-nowrap">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} aria-hidden={i !== 0} className="flex gap-16 pr-16">
               {[
                 { value: "14 giorni", label: "— Consegna media progetto" },
                 { value: "100%", label: "— Design su misura" },
                 { value: "85%", label: "— Conversioni ottimizzate" },
                 { value: "3x", label: "— Miglioramento performance medio" },
               ].map((stat) => (
-                <div className="flex items-baseline gap-4">
+                <div key={stat.value} className="flex items-baseline gap-4">
                   <span className="text-4xl lg:text-5xl font-display">{stat.value}</span>
                   <span className="text-sm text-muted-foreground">
                     {stat.label}

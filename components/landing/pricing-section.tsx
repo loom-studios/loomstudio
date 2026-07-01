@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowRight, Check, Plus } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { useContactModal } from "@/components/contact/contact-modal-provider";
 
 const plans = [
@@ -22,15 +21,6 @@ const plans = [
     ],
     cta: "Richiedi la landing",
     popular: false,
-    maintenance: {
-      price: 29,
-      features: [
-        "1 revisione al mese",
-        "Aggiornamenti contenuti e plugin",
-        "Backup e monitoraggio uptime",
-        "Supporto via email",
-      ],
-    },
   },
   {
     name: "Sito vetrina",
@@ -48,16 +38,6 @@ const plans = [
     ],
     cta: "Richiedi il sito",
     popular: true,
-    maintenance: {
-      price: 59,
-      features: [
-        "3 revisioni al mese",
-        "Aggiornamenti contenuti, plugin e sicurezza",
-        "Backup settimanali e monitoraggio",
-        "Report mensile delle performance",
-        "Supporto prioritario via email",
-      ],
-    },
   },
   {
     name: "Sito completo",
@@ -75,29 +55,29 @@ const plans = [
     ],
     cta: "Parliamo del progetto",
     popular: false,
-    maintenance: {
-      price: 99,
-      features: [
-        "Revisioni illimitate",
-        "Aggiornamenti completi e gestione hosting",
-        "Backup giornalieri e monitoraggio 24/7",
-        "Ottimizzazione SEO continuativa",
-        "Report mensile + call di confronto",
-        "Supporto prioritario dedicato",
-      ],
-    },
   },
 ];
 
+const maintenanceTiers = [
+  { name: "Base", price: 29 },
+  { name: "Pro", price: 59 },
+  { name: "Full", price: 99 },
+];
+
+const maintenanceRows: { label: string; values: (boolean | string)[] }[] = [
+  { label: "Revisioni / mese", values: ["1", "3", "Illimitate"] },
+  { label: "Aggiornamenti contenuti e plugin", values: [true, true, true] },
+  { label: "Gestione hosting", values: [true, true, true] },
+  { label: "Aggiornamenti sicurezza", values: [false, true, true] },
+  { label: "Report performance", values: [false, "Mensile", "Mensile + call"] },
+  { label: "Supporto", values: ["Email e telefono", "Prioritario", "Dedicato"] },
+];
+
 export function PricingSection() {
-  const [withMaintenance, setWithMaintenance] = useState<Record<string, boolean>>({});
   const { open } = useContactModal();
 
-  const toggleMaintenance = (name: string) =>
-    setWithMaintenance((prev) => ({ ...prev, [name]: !prev[name] }));
-
   return (
-    <section id="pricing" className="relative py-32 lg:py-40 border-t border-foreground/10">
+    <section id="prezzi" className="relative py-32 lg:py-40 border-t border-foreground/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="max-w-3xl mb-20">
@@ -110,111 +90,128 @@ export function PricingSection() {
             <span className="text-stroke">nessuna sorpresa</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-xl">
-            Tre pacchetti per ogni esigenza, con prezzo fisso a progetto. Aggiungi la
-            manutenzione opzionale per mantenere il sito sempre aggiornato.
+            Tre pacchetti per ogni esigenza, con prezzo fisso a progetto. Scegli poi il
+            piano di manutenzione che preferisci per mantenere il sito sempre aggiornato.
           </p>
         </div>
 
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-px bg-foreground/10">
-          {plans.map((plan, idx) => {
-            const active = !!withMaintenance[plan.name];
-            return (
-              <div
-                key={plan.name}
-                className={`relative p-8 lg:p-12 bg-background ${
-                  plan.popular ? "md:-my-4 md:py-12 lg:py-16 border-2 border-foreground" : ""
+          {plans.map((plan, idx) => (
+            <div
+              key={plan.name}
+              className={`relative p-8 lg:p-12 bg-background ${
+                plan.popular ? "md:-my-4 md:py-12 lg:py-16 border-2 border-foreground" : ""
+              }`}
+            >
+              {plan.popular && (
+                <span className="absolute -top-3 left-8 px-3 py-1 bg-foreground text-primary-foreground text-xs font-mono uppercase tracking-widest">
+                  Più richiesto
+                </span>
+              )}
+
+              {/* Plan Header */}
+              <div className="mb-8">
+                <span className="font-mono text-xs text-muted-foreground">
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-display text-3xl text-foreground mt-2">{plan.name}</h3>
+                <p className="text-sm text-muted-foreground mt-2">{plan.description}</p>
+              </div>
+
+              {/* Price */}
+              <div className="mb-8 pb-8 border-b border-foreground/10">
+                <div className="flex items-baseline gap-2">
+                  <span className="font-display text-5xl lg:text-6xl text-foreground">
+                    €{plan.price.toLocaleString("it-IT")}
+                  </span>
+                  <span className="text-muted-foreground">una tantum</span>
+                </div>
+              </div>
+
+              {/* Features */}
+              <ul className="space-y-4 mb-10">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <Check className="w-4 h-4 text-foreground mt-0.5 shrink-0" />
+                    <span className="text-sm text-muted-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA */}
+              <button
+                onClick={open}
+                className={`w-full py-4 flex items-center justify-center gap-2 text-sm font-medium transition-all group ${
+                  plan.popular
+                    ? "bg-foreground text-primary-foreground hover:bg-foreground/90"
+                    : "border border-foreground/20 text-foreground hover:border-foreground hover:bg-foreground/5"
                 }`}
               >
-                {plan.popular && (
-                  <span className="absolute -top-3 left-8 px-3 py-1 bg-foreground text-primary-foreground text-xs font-mono uppercase tracking-widest">
-                    Più richiesto
-                  </span>
-                )}
+                {plan.cta}
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </button>
+            </div>
+          ))}
+        </div>
 
-                {/* Plan Header */}
-                <div className="mb-8">
-                  <span className="font-mono text-xs text-muted-foreground">
-                    {String(idx + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="font-display text-3xl text-foreground mt-2">{plan.name}</h3>
-                  <p className="text-sm text-muted-foreground mt-2">{plan.description}</p>
-                </div>
+        {/* Maintenance table */}
+        <div className="max-w-2xl mx-auto mt-16">
+          <div className="text-center mb-6">
+            <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase block mb-2">
+              Manutenzione
+            </span>
+            <h3 className="font-display text-2xl md:text-3xl text-foreground">
+              Scegli come mantenere il sito
+            </h3>
+            <p className="text-sm text-muted-foreground mt-2 max-w-md mx-auto">
+              Piani mensili opzionali, disattivabili in ogni momento.
+            </p>
+          </div>
 
-                {/* Price */}
-                <div className="mb-8 pb-8 border-b border-foreground/10">
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-display text-5xl lg:text-6xl text-foreground">
-                      €{(active ? plan.price + plan.maintenance.price : plan.price).toLocaleString("it-IT")}
-                    </span>
-                    <span className="text-muted-foreground">
-                      {active ? "una tantum + mese" : "una tantum"}
-                    </span>
-                  </div>
-                  {active && (
-                    <p className="mt-2 text-xs font-mono text-muted-foreground">
-                      €{plan.price.toLocaleString("it-IT")} progetto + €
-                      {plan.maintenance.price}/mese manutenzione
-                    </p>
-                  )}
-                </div>
-
-                {/* Features */}
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <Check className="w-4 h-4 text-foreground mt-0.5 shrink-0" />
-                      <span className="text-sm text-muted-foreground">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Maintenance add-on */}
-                <div className="mb-10 border-t border-foreground/10 pt-6">
-                  <button
-                    onClick={() => toggleMaintenance(plan.name)}
-                    className={`w-full flex items-center justify-between gap-3 text-left transition-colors ${
-                      active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    <span className="flex items-center gap-2 text-sm font-medium">
-                      <Plus
-                        className={`w-4 h-4 transition-transform ${active ? "rotate-45" : ""}`}
-                      />
-                      Manutenzione opzionale
-                    </span>
-                    <span className="font-mono text-xs whitespace-nowrap">
-                      +€{plan.maintenance.price}/mese
-                    </span>
-                  </button>
-
-                  {active && (
-                    <ul className="space-y-3 mt-5">
-                      {plan.maintenance.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-3">
-                          <Check className="w-4 h-4 text-foreground mt-0.5 shrink-0" />
-                          <span className="text-sm text-muted-foreground">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-
-                {/* CTA */}
-                <button
-                  onClick={open}
-                  className={`w-full py-4 flex items-center justify-center gap-2 text-sm font-medium transition-all group ${
-                    plan.popular
-                      ? "bg-foreground text-primary-foreground hover:bg-foreground/90"
-                      : "border border-foreground/20 text-foreground hover:border-foreground hover:bg-foreground/5"
-                  }`}
-                >
-                  {plan.cta}
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </button>
+          <div className="relative overflow-x-auto">
+            <div className="grid grid-cols-[1.6fr_1fr_1fr_1fr] gap-px bg-foreground/10 min-w-[520px]">
+              {/* Header row */}
+              <div className="bg-background px-4 py-2.5 flex items-center">
+                <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+                  Cosa include
+                </span>
               </div>
-            );
-          })}
+              {maintenanceTiers.map((tier) => (
+                <div key={tier.name} className="bg-background px-4 py-2.5 text-center">
+                  <span className="block font-mono text-xs tracking-widest text-foreground uppercase">
+                    {tier.name}
+                  </span>
+                  <span className="block font-mono text-xs text-muted-foreground mt-1">
+                    €{tier.price}/mese
+                  </span>
+                </div>
+              ))}
+
+              {/* Body rows */}
+              {maintenanceRows.map((row) => (
+                <div key={row.label} className="contents">
+                  <div className="bg-background px-4 py-2.5 flex items-center">
+                    <span className="text-sm text-muted-foreground">{row.label}</span>
+                  </div>
+                  {row.values.map((value, i) => (
+                    <div
+                      key={i}
+                      className="bg-background px-4 py-2.5 flex items-center justify-center text-center"
+                    >
+                      {value === true ? (
+                        <Check className="w-4 h-4 text-foreground" />
+                      ) : value === false ? (
+                        <span className="text-muted-foreground/40">—</span>
+                      ) : (
+                        <span className="text-sm text-foreground">{value}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
       </div>

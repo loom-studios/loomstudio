@@ -91,6 +91,9 @@
   html {
     scroll-behavior: smooth;
   }
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
 }
 
 @layer utilities {
@@ -120,7 +123,14 @@
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
   }
-  
+
+  /* Faster scroll on mobile — but not too fast */
+  @media (max-width: 768px) {
+    .marquee {
+      animation-duration: 20s;
+    }
+  }
+
   .line-reveal {
     clip-path: inset(0 100% 0 0);
     animation: line-reveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;

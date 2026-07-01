@@ -73,7 +73,12 @@ export function AnimatedTetrahedron() {
 
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      const scale = Math.min(rect.width, rect.height) * 0.7;
+      // Vertices sit up to ~1.118 units from the center, so during a full 3D
+      // rotation a corner can project that far along either screen axis. Keep
+      // the scale low enough that the widest rotation still fits inside the
+      // canvas (1.118 * scale + glyph margin <= half the canvas), otherwise the
+      // tetrahedron gets clipped at the edges as it spins.
+      const scale = Math.min(rect.width, rect.height) * 0.3;
 
       ctx.font = "18px monospace";
       ctx.textAlign = "center";
