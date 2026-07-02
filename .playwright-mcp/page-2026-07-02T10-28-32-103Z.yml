@@ -1,0 +1,473 @@
+- generic [active] [ref=e1]:
+  - main [ref=e4]:
+    - navigation [ref=e6]:
+      - generic [ref=e7]:
+        - link "Loom Studio" [ref=e8] [cursor=pointer]:
+          - /url: "#"
+          - img "Loom Studio" [ref=e9]
+        - generic [ref=e10]:
+          - link "Studio" [ref=e11] [cursor=pointer]:
+            - /url: "#studio"
+            - text: Studio
+          - link "Servizi" [ref=e12] [cursor=pointer]:
+            - /url: "#servizi"
+            - text: Servizi
+          - link "Progetti" [ref=e13] [cursor=pointer]:
+            - /url: "#progetti"
+            - text: Progetti
+          - link "Contatti" [ref=e14] [cursor=pointer]:
+            - /url: "#contatti"
+            - text: Contatti
+          - link "Prezzi" [ref=e15] [cursor=pointer]:
+            - /url: "#prezzi"
+            - text: Prezzi
+        - button "Inizia un progetto" [ref=e17]
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e21]: Brand. Design. Development.
+        - heading "Siamo nati per c r e a r e" [level=1] [ref=e24]:
+          - generic [ref=e25]: Siamo nati
+          - generic [ref=e26]:
+            - text: per
+            - generic [ref=e28]:
+              - generic [ref=e29]: c
+              - generic [ref=e30]: r
+              - generic [ref=e31]: e
+              - generic [ref=e32]: a
+              - generic [ref=e33]: r
+              - generic [ref=e34]: e
+        - generic [ref=e36]:
+          - paragraph [ref=e37]: Loom Studio è un’agenzia di web design e sviluppo che trasforma idee in prodotti digitali ad alte prestazioni.
+          - button "Inizia un progetto" [ref=e39]:
+            - text: Inizia un progetto
+            - img
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]: 14 giorni
+            - generic [ref=e45]: — Consegna media progetto
+          - generic [ref=e46]:
+            - generic [ref=e47]: 100%
+            - generic [ref=e48]: — Design su misura
+          - generic [ref=e49]:
+            - generic [ref=e50]: 85%
+            - generic [ref=e51]: — Conversioni ottimizzate
+          - generic [ref=e52]:
+            - generic [ref=e53]: 3x
+            - generic [ref=e54]: — Miglioramento performance medio
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - generic [ref=e57]: 14 giorni
+            - generic [ref=e58]: — Consegna media progetto
+          - generic [ref=e59]:
+            - generic [ref=e60]: 100%
+            - generic [ref=e61]: — Design su misura
+          - generic [ref=e62]:
+            - generic [ref=e63]: 85%
+            - generic [ref=e64]: — Conversioni ottimizzate
+          - generic [ref=e65]:
+            - generic [ref=e66]: 3x
+            - generic [ref=e67]: — Miglioramento performance medio
+        - generic [ref=e68]:
+          - generic [ref=e69]:
+            - generic [ref=e70]: 14 giorni
+            - generic [ref=e71]: — Consegna media progetto
+          - generic [ref=e72]:
+            - generic [ref=e73]: 100%
+            - generic [ref=e74]: — Design su misura
+          - generic [ref=e75]:
+            - generic [ref=e76]: 85%
+            - generic [ref=e77]: — Conversioni ottimizzate
+          - generic [ref=e78]:
+            - generic [ref=e79]: 3x
+            - generic [ref=e80]: — Miglioramento performance medio
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - generic [ref=e83]: 14 giorni
+            - generic [ref=e84]: — Consegna media progetto
+          - generic [ref=e85]:
+            - generic [ref=e86]: 100%
+            - generic [ref=e87]: — Design su misura
+          - generic [ref=e88]:
+            - generic [ref=e89]: 85%
+            - generic [ref=e90]: — Conversioni ottimizzate
+          - generic [ref=e91]:
+            - generic [ref=e92]: 3x
+            - generic [ref=e93]: — Miglioramento performance medio
+    - generic [ref=e95]:
+      - generic [ref=e96]:
+        - generic [ref=e97]: Studio
+        - heading "Chi siamo" [level=2] [ref=e99]
+      - generic [ref=e100]:
+        - img "Loom Studio" [ref=e103]
+        - generic [ref=e104]:
+          - generic [ref=e105]:
+            - paragraph [ref=e106]: Siamo Loom Studio, un piccolo collettivo di designer e sviluppatori ossessionati dai dettagli. Intrecciamo strategia, design e codice per dare forma a esperienze digitali che lasciano il segno.
+            - paragraph [ref=e107]: "Crediamo che un grande progetto nasca dall'ascolto: capire chi sei, dove vuoi andare e cosa ti rende unico. Da lì costruiamo tutto il resto, con cura artigianale e tecnologia di livello."
+          - generic [ref=e108]:
+            - generic [ref=e109]:
+              - generic [ref=e110]: "01"
+              - generic [ref=e111]:
+                - heading "Su misura" [level=3] [ref=e112]
+                - paragraph [ref=e113]: Niente template. Ogni progetto nasce dalle esigenze reali del brand e prende forma da zero.
+            - generic [ref=e114]:
+              - generic [ref=e115]: "02"
+              - generic [ref=e116]:
+                - heading "Cura del dettaglio" [level=3] [ref=e117]
+                - paragraph [ref=e118]: Dalla prima bozza all'ultimo pixel, ci ossessioniamo per ciò che fa davvero la differenza.
+            - generic [ref=e119]:
+              - generic [ref=e120]: "03"
+              - generic [ref=e121]:
+                - heading "Collaborazione" [level=3] [ref=e122]
+                - paragraph [ref=e123]: Lavoriamo fianco a fianco con te, con un dialogo costante e trasparente in ogni fase.
+    - generic [ref=e125]:
+      - generic [ref=e126]:
+        - generic [ref=e127]: Servizi
+        - heading "Design, sviluppo e strategia in un unico sistema" [level=2] [ref=e129]:
+          - text: Design, sviluppo e strategia
+          - text: in un unico sistema
+      - generic [ref=e130]:
+        - generic [ref=e132]:
+          - generic [ref=e133]: "01"
+          - generic [ref=e134]:
+            - generic [ref=e135]:
+              - heading "Branding" [level=3] [ref=e136]
+              - paragraph [ref=e137]: Identità di brand distintive emergono attraverso loghi strategici, linee guida visive coerenti e sistemi grafici pensati nei minimi dettagli. Ogni elemento è progettato con precisione per raccontare la tua storia e creare una connessione emotiva autentica.
+            - img [ref=e140]
+        - generic [ref=e151]:
+          - generic [ref=e152]: "02"
+          - generic [ref=e153]:
+            - generic [ref=e154]:
+              - heading "Web Design" [level=3] [ref=e155]
+              - paragraph [ref=e156]: Dalla UI pixel-perfect a interazioni 3D immersive, uniamo un’estetica di livello editoriale a esperienze utente intuitive. Prototipiamo, iteriamo e rifiniamo ogni interfaccia fino a renderla tanto fluida da utilizzare quanto d’impatto da guardare.
+            - img [ref=e159]
+        - generic [ref=e179]:
+          - generic [ref=e180]: "03"
+          - generic [ref=e181]:
+            - generic [ref=e182]:
+              - heading "Development" [level=3] [ref=e183]
+              - paragraph [ref=e184]: Diamo vita ai design attraverso framework moderni, JavaScript personalizzato e codice ad alte prestazioni. Il nostro processo di sviluppo garantisce che ogni animazione sia fluida, ogni interazione risulti naturale e ogni pagina si carichi in un istante. La base che costruiamo è tanto affidabile quanto curata dal punto di vista estetico.
+            - img [ref=e187]:
+              - generic [ref=e190]: A
+              - generic [ref=e194]: B
+    - generic [ref=e200]:
+      - generic [ref=e201]:
+        - generic [ref=e202]: Processo
+        - heading "Tre steps. Infinite possibilità." [level=2] [ref=e204]:
+          - text: Tre steps.
+          - text: Infinite possibilità.
+      - generic [ref=e206]:
+        - button "01 Scoperta & Strategia Analizziamo il progetto, il mercato e definiamo struttura, contenuti e direzione visiva." [ref=e207]:
+          - generic [ref=e208]:
+            - generic [ref=e209]: "01"
+            - generic [ref=e210]:
+              - heading "Scoperta & Strategia" [level=3] [ref=e211]
+              - paragraph [ref=e212]: Analizziamo il progetto, il mercato e definiamo struttura, contenuti e direzione visiva.
+        - button "02 Design & Sviluppo Progettiamo l'esperienza e la trasformiamo in un prodotto digitale funzionale e ad alte prestazioni." [ref=e215]:
+          - generic [ref=e216]:
+            - generic [ref=e217]: "02"
+            - generic [ref=e218]:
+              - heading "Design & Sviluppo" [level=3] [ref=e219]
+              - paragraph [ref=e220]: Progettiamo l'esperienza e la trasformiamo in un prodotto digitale funzionale e ad alte prestazioni.
+        - button "03 Lancio & Ottimizzazione Portiamo il progetto online, lo ottimizziamo e ne miglioriamo continuamente performance e risultati." [ref=e221]:
+          - generic [ref=e222]:
+            - generic [ref=e223]: "03"
+            - generic [ref=e224]:
+              - heading "Lancio & Ottimizzazione" [level=3] [ref=e225]
+              - paragraph [ref=e226]: Portiamo il progetto online, lo ottimizziamo e ne miglioriamo continuamente performance e risultati.
+    - generic [ref=e231]:
+      - generic [ref=e232]:
+        - generic [ref=e233]:
+          - generic [ref=e234]: Lavori
+          - heading "Progetti selezionati, realizzati con cura." [level=2] [ref=e236]:
+            - text: Progetti selezionati,
+            - text: realizzati con cura.
+        - button "Inizia il tuo progetto" [ref=e237]:
+          - text: Inizia il tuo progetto
+          - img [ref=e238]
+      - generic [ref=e241]:
+        - link ".titan .titan Gym brand 2025" [ref=e242] [cursor=pointer]:
+          - /url: "#contatti"
+          - generic [ref=e243]:
+            - img ".titan" [ref=e245]
+            - img [ref=e248]
+          - generic [ref=e251]:
+            - generic [ref=e252]:
+              - heading ".titan" [level=3] [ref=e253]
+              - paragraph [ref=e254]: Gym brand
+            - generic [ref=e255]: "2025"
+        - link "soho soho Fashion design 2025" [ref=e256] [cursor=pointer]:
+          - /url: "#contatti"
+          - generic [ref=e257]:
+            - img "soho" [ref=e259]
+            - img [ref=e262]
+          - generic [ref=e265]:
+            - generic [ref=e266]:
+              - heading "soho" [level=3] [ref=e267]
+              - paragraph [ref=e268]: Fashion design
+            - generic [ref=e269]: "2025"
+        - link "kerbites kerbites Fast food 2026" [ref=e270] [cursor=pointer]:
+          - /url: "#contatti"
+          - generic [ref=e271]:
+            - img "kerbites" [ref=e273]
+            - img [ref=e276]
+          - generic [ref=e279]:
+            - generic [ref=e280]:
+              - heading "kerbites" [level=3] [ref=e281]
+              - paragraph [ref=e282]: Fast food
+            - generic [ref=e283]: "2026"
+        - link ".ok- .ok- Energy drink 2026" [ref=e284] [cursor=pointer]:
+          - /url: "#contatti"
+          - generic [ref=e285]:
+            - img ".ok-" [ref=e287]
+            - img [ref=e290]
+          - generic [ref=e293]:
+            - generic [ref=e294]:
+              - heading ".ok-" [level=3] [ref=e295]
+              - paragraph [ref=e296]: Energy drink
+            - generic [ref=e297]: "2026"
+    - generic [ref=e299]:
+      - generic [ref=e300]:
+        - generic [ref=e301]: Cosa dicono di noi
+        - generic [ref=e303]: 01 / 04
+      - generic [ref=e304]:
+        - generic [ref=e305]:
+          - blockquote [ref=e306]:
+            - paragraph [ref=e307]: "\"Loom Studio ha dato vita al nostro brand. Il nuovo sito ha superato ogni aspettativa, sia nel design che nei risultati.\""
+          - generic [ref=e308]:
+            - generic [ref=e310]: G
+            - paragraph [ref=e312]: Giulia Ferrari
+        - generic [ref=e313]:
+          - paragraph [ref=e315]: +120% di richieste online
+          - generic [ref=e316]:
+            - button [ref=e317]
+            - button [ref=e318]
+            - button [ref=e319]
+            - button [ref=e320]
+    - generic [ref=e322]:
+      - generic [ref=e323]:
+        - generic [ref=e324]: Pacchetti
+        - heading "Prezzi chiari, nessuna sorpresa" [level=2] [ref=e325]:
+          - text: Prezzi chiari,
+          - text: nessuna sorpresa
+        - paragraph [ref=e326]: Tre pacchetti per ogni esigenza, con prezzo fisso a progetto. Scegli poi il piano di manutenzione che preferisci per mantenere il sito sempre aggiornato.
+      - generic [ref=e327]:
+        - generic [ref=e328]:
+          - generic [ref=e329]:
+            - text: "01"
+            - heading "Landing Page" [level=3] [ref=e330]
+            - paragraph [ref=e331]: Una pagina che converte, perfetta per lanci e campagne
+          - generic [ref=e333]:
+            - generic [ref=e334]: €500
+            - generic [ref=e335]: una tantum
+          - list [ref=e336]:
+            - listitem [ref=e337]:
+              - img [ref=e338]
+              - generic [ref=e340]: Sito one-page su misura
+            - listitem [ref=e341]:
+              - img [ref=e342]
+              - generic [ref=e344]: Design responsive (mobile, tablet, desktop)
+            - listitem [ref=e345]:
+              - img [ref=e346]
+              - generic [ref=e348]: Copywriting della sezione principale
+            - listitem [ref=e349]:
+              - img [ref=e350]
+              - generic [ref=e352]: Form di contatto integrato
+            - listitem [ref=e353]:
+              - img [ref=e354]
+              - generic [ref=e356]: Ottimizzazione SEO di base
+            - listitem [ref=e357]:
+              - img [ref=e358]
+              - generic [ref=e360]: Collegamento ai social
+            - listitem [ref=e361]:
+              - img [ref=e362]
+              - generic [ref=e364]: Integrazione Google Analytics
+            - listitem [ref=e365]:
+              - img [ref=e366]
+              - generic [ref=e368]: 2 revisioni incluse
+            - listitem [ref=e369]:
+              - img [ref=e370]
+              - generic [ref=e372]: Pubblicazione e messa online
+          - button "Richiedi la landing" [ref=e373]:
+            - text: Richiedi la landing
+            - img [ref=e374]
+        - generic [ref=e376]:
+          - generic [ref=e377]: Più richiesto
+          - generic [ref=e378]:
+            - text: "02"
+            - heading "Sito vetrina" [level=3] [ref=e379]
+            - paragraph [ref=e380]: Il sito vetrina ideale per professionisti e piccole attività
+          - generic [ref=e382]:
+            - generic [ref=e383]: €1000
+            - generic [ref=e384]: una tantum
+          - list [ref=e385]:
+            - listitem [ref=e386]:
+              - img [ref=e387]
+              - generic [ref=e389]: Sito fino a 3 pagine (Home, Chi siamo, Contatti/Servizi)
+            - listitem [ref=e390]:
+              - img [ref=e391]
+              - generic [ref=e393]: Tutto ciò che è incluso nella Landing Page
+            - listitem [ref=e394]:
+              - img [ref=e395]
+              - generic [ref=e397]: Design personalizzato per ogni pagina
+            - listitem [ref=e398]:
+              - img [ref=e399]
+              - generic [ref=e401]: Copywriting completo dei contenuti
+            - listitem [ref=e402]:
+              - img [ref=e403]
+              - generic [ref=e405]: SEO avanzata su tutte le pagine
+            - listitem [ref=e406]:
+              - img [ref=e407]
+              - generic [ref=e409]: Form avanzati e prenotazioni online
+            - listitem [ref=e410]:
+              - img [ref=e411]
+              - generic [ref=e413]: Integrazione mappe e WhatsApp
+            - listitem [ref=e414]:
+              - img [ref=e415]
+              - generic [ref=e417]: 4 revisioni incluse
+          - button "Richiedi il sito" [ref=e418]:
+            - text: Richiedi il sito
+            - img [ref=e419]
+        - generic [ref=e421]:
+          - generic [ref=e422]:
+            - text: "03"
+            - heading "Sito completo" [level=3] [ref=e423]
+            - paragraph [ref=e424]: Il progetto completo, dalla strategia al sito su misura
+          - generic [ref=e426]:
+            - generic [ref=e427]: €1500
+            - generic [ref=e428]: una tantum
+          - list [ref=e429]:
+            - listitem [ref=e430]:
+              - img [ref=e431]
+              - generic [ref=e433]: Sito completo multi-pagina (illimitate)
+            - listitem [ref=e434]:
+              - img [ref=e435]
+              - generic [ref=e437]: Tutto ciò che è incluso nel Sito vetrina
+            - listitem [ref=e438]:
+              - img [ref=e439]
+              - generic [ref=e441]: Strategia e architettura dei contenuti
+            - listitem [ref=e442]:
+              - img [ref=e443]
+              - generic [ref=e445]: Ottimizzazione performance e Core Web Vitals
+            - listitem [ref=e446]:
+              - img [ref=e447]
+              - generic [ref=e449]: SEO tecnica completa + dati strutturati
+            - listitem [ref=e450]:
+              - img [ref=e451]
+              - generic [ref=e453]: Predisposizione multilingua
+            - listitem [ref=e454]:
+              - img [ref=e455]
+              - generic [ref=e457]: Animazioni e interazioni avanzate
+            - listitem [ref=e458]:
+              - img [ref=e459]
+              - generic [ref=e461]: Consegna prioritaria + revisioni illimitate
+          - button "Parliamo del progetto" [ref=e462]:
+            - text: Parliamo del progetto
+            - img [ref=e463]
+      - generic [ref=e466]:
+        - generic [ref=e467]:
+          - generic [ref=e468]: Manutenzione
+          - heading "Scegli come mantenere il sito" [level=3] [ref=e469]
+          - paragraph [ref=e470]: Piani mensili opzionali, disattivabili in ogni momento.
+        - generic [ref=e472]:
+          - generic [ref=e474]: Cosa include
+          - generic [ref=e475]:
+            - generic [ref=e476]: Base
+            - generic [ref=e477]: €29/mese
+          - generic [ref=e478]:
+            - generic [ref=e479]: Pro
+            - generic [ref=e480]: €59/mese
+          - generic [ref=e481]:
+            - generic [ref=e482]: Full
+            - generic [ref=e483]: €99/mese
+          - generic [ref=e484]:
+            - generic [ref=e486]: Revisioni / mese
+            - generic [ref=e488]: "1"
+            - generic [ref=e490]: "3"
+            - generic [ref=e492]: Illimitate
+          - generic [ref=e493]:
+            - generic [ref=e495]: Aggiornamenti contenuti e plugin
+            - img [ref=e497]
+            - img [ref=e500]
+            - img [ref=e503]
+          - generic [ref=e505]:
+            - generic [ref=e507]: Gestione hosting
+            - img [ref=e509]
+            - img [ref=e512]
+            - img [ref=e515]
+          - generic [ref=e517]:
+            - generic [ref=e519]: Aggiornamenti sicurezza
+            - generic [ref=e521]: —
+            - img [ref=e523]
+            - img [ref=e526]
+          - generic [ref=e528]:
+            - generic [ref=e530]: Report performance
+            - generic [ref=e532]: —
+            - generic [ref=e534]: Mensile
+            - generic [ref=e536]: Mensile + call
+          - generic [ref=e537]:
+            - generic [ref=e539]: Supporto
+            - generic [ref=e541]: Email e telefono
+            - generic [ref=e543]: Prioritario
+            - generic [ref=e545]: Dedicato
+    - generic [ref=e551]:
+      - heading "Pronto a creare qualcosa di straordinario?" [level=2] [ref=e552]:
+        - text: Pronto a creare
+        - text: qualcosa di straordinario?
+      - paragraph [ref=e553]: Hai un progetto in mente? Contattaci e iniziamo a costruire qualcosa di davvero speciale insieme. Unisciti a chi trasforma le idee in prodotti digitali più velocemente. Inizia subito, scala senza limiti.
+      - button "Parla con noi" [ref=e555]:
+        - text: Parla con noi
+        - img
+    - generic [ref=e561]:
+      - generic [ref=e563]:
+        - generic [ref=e564]:
+          - link "Loom Studio" [ref=e565] [cursor=pointer]:
+            - /url: "#"
+            - img "Loom Studio" [ref=e566]
+          - paragraph [ref=e567]: Lo studio creativo per chi vuole distinguersi. Progettiamo, sviluppiamo e facciamo crescere il tuo brand online.
+          - button "Inizia un progetto" [ref=e568]
+          - generic [ref=e569]:
+            - link "Instagram" [ref=e570] [cursor=pointer]:
+              - /url: "#"
+              - text: Instagram
+              - img [ref=e571]
+            - link "LinkedIn" [ref=e574] [cursor=pointer]:
+              - /url: "#"
+              - text: LinkedIn
+              - img [ref=e575]
+            - link "Behance" [ref=e578] [cursor=pointer]:
+              - /url: "#"
+              - text: Behance
+              - img [ref=e579]
+        - generic [ref=e582]:
+          - generic [ref=e583]:
+            - heading "Navigazione" [level=3] [ref=e584]
+            - list [ref=e585]:
+              - listitem [ref=e586]:
+                - link "Studio" [ref=e587] [cursor=pointer]:
+                  - /url: "#studio"
+              - listitem [ref=e588]:
+                - link "Servizi" [ref=e589] [cursor=pointer]:
+                  - /url: "#servizi"
+              - listitem [ref=e590]:
+                - link "Progetti" [ref=e591] [cursor=pointer]:
+                  - /url: "#progetti"
+              - listitem [ref=e592]:
+                - link "Contatti" [ref=e593] [cursor=pointer]:
+                  - /url: "#contatti"
+              - listitem [ref=e594]:
+                - link "Prezzi" [ref=e595] [cursor=pointer]:
+                  - /url: "#prezzi"
+          - generic [ref=e596]:
+            - heading "Legale" [level=3] [ref=e597]
+            - list [ref=e598]:
+              - listitem [ref=e599]:
+                - button "Privacy" [ref=e600]
+              - listitem [ref=e601]:
+                - button "Termini" [ref=e602]
+              - listitem [ref=e603]:
+                - button "Cookie" [ref=e604]
+      - generic [ref=e605]:
+        - paragraph [ref=e606]: © 2025 Loom Studio. Tutti i diritti riservati.
+        - generic [ref=e608]: Disponibili per nuovi progetti
+  - alert [ref=e610]
