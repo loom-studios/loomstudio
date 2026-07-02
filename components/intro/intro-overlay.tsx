@@ -19,7 +19,9 @@ import { useEffect, useRef, useState } from "react";
 // ─────────────────────────────────────────────────────────────
 
 const STORAGE_KEY = "loom-intro-seen";
-const SAFETY_TIMEOUT_MS = 8000; // chiude comunque se il video non finisce
+// Poco sopra la durata del video (5,9s): protegge da caricamenti bloccati
+// senza troncare la riproduzione normale. Se cambi il video, aggiorna qui.
+const SAFETY_TIMEOUT_MS = 6500;
 const FADE_MS = 500; // deve combaciare con `duration-500`
 
 export function IntroOverlay() {
@@ -63,6 +65,7 @@ export function IntroOverlay() {
     <div
       id="loom-intro"
       aria-hidden="true"
+      onPointerDown={close}
       className="fixed inset-0 z-[200] flex items-center justify-center bg-[#fefefe] transition-opacity duration-500"
       style={{ opacity: closing ? 0 : 1 }}
     >

@@ -9,15 +9,10 @@ import { useContactModal } from "@/components/contact/contact-modal-provider";
 const words = ["creare", "progettare", "innovare", "ispirare"];
 
 export function HeroSection() {
-  const [isVisible, setIsVisible] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const [barWidth, setBarWidth] = useState(0);
   const wordRef = useRef<HTMLSpanElement>(null);
   const { open } = useContactModal();
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   // Measure the current word so the underline bar matches its width and can
   // transition smoothly between words instead of spanning the longest one.
@@ -69,11 +64,7 @@ export function HeroSection() {
       
       <div className="relative z-10 flex-1 flex flex-col justify-center lg:justify-start w-full max-w-[1400px] mx-auto px-6 lg:px-12 lg:pl-6 xl:pl-10 py-32 lg:pt-32 lg:pb-16">
         {/* Eyebrow */}
-        <div 
-          className={`mb-8 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
+        <div className="mb-8 animate-rise">
           <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground">
             <span className="w-8 h-px bg-foreground/30" />
             Brand. Design. Development.
@@ -82,11 +73,7 @@ export function HeroSection() {
         
         {/* Main headline */}
         <div className="mb-12">
-          <h1 
-            className={`text-[clamp(3rem,12vw,10rem)] font-display leading-[0.9] tracking-tight transition-all duration-1000 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <h1 className="text-[clamp(3rem,12vw,10rem)] font-display leading-[0.9] tracking-tight animate-rise-lg">
             <span className="block">Siamo nati</span>
             <span className="block">
               per{" "}
@@ -124,18 +111,16 @@ export function HeroSection() {
         {/* Description */}
         <div className="flex flex-col gap-8">
           <p
-            className={`text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-xl transition-all duration-700 delay-200 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
+            className="text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-xl animate-rise"
+            style={{ animationDelay: "200ms" }}
           >
             Loom Studio è un’agenzia di web design e sviluppo che trasforma idee in prodotti digitali ad alte prestazioni.
           </p>
 
           {/* CTAs */}
           <div
-            className={`flex flex-col sm:flex-row items-start gap-4 transition-all duration-700 delay-300 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
+            className="flex flex-col sm:flex-row items-start gap-4 animate-rise"
+            style={{ animationDelay: "300ms" }}
           >
             <Button
               size="lg"
@@ -153,9 +138,8 @@ export function HeroSection() {
       
       {/* Stats marquee - full width outside container */}
       <div
-        className={`relative z-10 pb-24 transition-all duration-700 delay-500 ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
+        className="relative z-10 pb-24 animate-fade"
+        style={{ animationDelay: "500ms" }}
       >
         <div className="flex w-max marquee whitespace-nowrap">
           {[...Array(4)].map((_, i) => (

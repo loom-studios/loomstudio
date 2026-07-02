@@ -14,15 +14,38 @@ export function AnimatedTetrahedron() {
     if (!ctx) return;
 
     const chars = "░▒▓█▀▄▌▐│─┤├┴┬╭╮╰╯";
+    const fontSize = 18;
+    // Decorativo: DPR limitato e 30fps (vedi animated-sphere per il perché)
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const frameMs = 1000 / 30;
     let time = 0;
     let running = false;
+    let width = 0;
+    let height = 0;
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    // Atlante dei glifi: pre-renderizzati una volta, copiati con drawImage +
+    // globalAlpha invece di una fillText per punto a ogni frame.
+    const cell = fontSize * 2;
+    const atlas = document.createElement("canvas");
+    atlas.width = cell * 2 * chars.length;
+    atlas.height = cell * 2;
+    const atlasCtx = atlas.getContext("2d");
+    if (!atlasCtx) return;
+    atlasCtx.font = `${fontSize * 2}px monospace`;
+    atlasCtx.textAlign = "center";
+    atlasCtx.textBaseline = "middle";
+    atlasCtx.fillStyle = "rgb(0, 0, 0)";
+    for (let i = 0; i < chars.length; i++) {
+      atlasCtx.fillText(chars[i], i * cell * 2 + cell, cell);
+    }
+
     const resize = () => {
-      const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+      width = rect.width;
+      height = rect.height;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
       ctx.scale(dpr, dpr);
     };
 
@@ -69,24 +92,25 @@ export function AnimatedTetrahedron() {
       z: point.z,
     });
 
-    const render = () => {
-      const rect = canvas.getBoundingClientRect();
-      ctx.clearRect(0, 0, rect.width, rect.height);
+    let last = -Infinity;
 
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+    const render = (now = 0) => {
+      if (running) frameRef.current = requestAnimationFrame(render);
+      if (now - last < frameMs) return;
+      last = now;
+
+      ctx.clearRect(0, 0, width, height);
+
+      const centerX = width / 2;
+      const centerY = height / 2;
       // Vertices sit up to ~1.118 units from the center, so during a full 3D
       // rotation a corner can project that far along either screen axis. Keep
       // the scale low enough that the widest rotation still fits inside the
       // canvas (1.118 * scale + glyph margin <= half the canvas), otherwise the
       // tetrahedron gets clipped at the edges as it spins.
-      const scale = Math.min(rect.width, rect.height) * 0.3;
+      const scale = Math.min(width, height) * 0.3;
 
-      ctx.font = "18px monospace";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-
-      const points: { x: number; y: number; z: number; char: string }[] = [];
+      const points: { x: number; y: number; z: number; charIndex: number }[] = [];
 
       // Generate points along edges
       edges.forEach(([i, j]) => {
@@ -112,7 +136,7 @@ export function AnimatedTetrahedron() {
             x: centerX + point.x * scale,
             y: centerY - point.y * scale,
             z: point.z,
-            char: chars[Math.min(charIndex, chars.length - 1)],
+            charIndex: Math.min(charIndex, chars.length - 1),
           });
         }
       });
@@ -144,7 +168,7 @@ export function AnimatedTetrahedron() {
               x: centerX + point.x * scale,
               y: centerY - point.y * scale,
               z: point.z,
-              char: chars[Math.min(charIndex, chars.length - 1)],
+              charIndex: Math.min(charIndex, chars.length - 1),
             });
           }
         }
@@ -156,18 +180,29 @@ export function AnimatedTetrahedron() {
       // Draw points
       points.forEach((point) => {
         const alpha = 0.15 + (point.z + 1.5) * 0.25;
-        ctx.fillStyle = `rgba(0, 0, 0, ${Math.min(alpha, 0.9)})`;
-        ctx.fillText(point.char, point.x, point.y);
+        ctx.globalAlpha = Math.min(alpha, 0.9);
+        ctx.drawImage(
+          atlas,
+          point.charIndex * cell * 2,
+          0,
+          cell * 2,
+          cell * 2,
+          point.x - cell / 2,
+          point.y - cell / 2,
+          cell,
+          cell
+        );
       });
+      ctx.globalAlpha = 1;
 
-      time += 0.015;
-      if (running) frameRef.current = requestAnimationFrame(render);
+      // Incremento doppio rispetto a 60fps per mantenere la stessa velocità
+      time += 0.03;
     };
 
     const start = () => {
       if (running) return;
       running = true;
-      render();
+      frameRef.current = requestAnimationFrame(render);
     };
     const stop = () => {
       running = false;

@@ -14,39 +14,65 @@ export function AnimatedSphere() {
     if (!ctx) return;
 
     const chars = "░▒▓█▀▄▌▐│─┤├┴┬╭╮╰╯";
+    const fontSize = 12;
+    // Decorativo: DPR limitato e 30fps. Su mobile un DPR 3 moltiplicherebbe
+    // per 9 i pixel del backing store; meno punti su schermi piccoli.
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const step = window.innerWidth < 768 ? 0.2 : 0.15;
+    const frameMs = 1000 / 30;
     let time = 0;
     let running = false;
+    let width = 0;
+    let height = 0;
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    // Atlante dei glifi: ogni carattere è pre-renderizzato una volta (a 2x) e
+    // poi copiato con drawImage + globalAlpha — molto più economico di una
+    // fillText per punto a ogni frame.
+    const cell = fontSize * 2;
+    const atlas = document.createElement("canvas");
+    atlas.width = cell * 2 * chars.length;
+    atlas.height = cell * 2;
+    const atlasCtx = atlas.getContext("2d");
+    if (!atlasCtx) return;
+    atlasCtx.font = `${fontSize * 2}px monospace`;
+    atlasCtx.textAlign = "center";
+    atlasCtx.textBaseline = "middle";
+    atlasCtx.fillStyle = "rgb(0, 0, 0)";
+    for (let i = 0; i < chars.length; i++) {
+      atlasCtx.fillText(chars[i], i * cell * 2 + cell, cell);
+    }
+
     const resize = () => {
-      const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+      width = rect.width;
+      height = rect.height;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
       ctx.scale(dpr, dpr);
     };
 
     resize();
     window.addEventListener("resize", resize);
 
-    const render = () => {
-      const rect = canvas.getBoundingClientRect();
-      ctx.clearRect(0, 0, rect.width, rect.height);
+    let last = -Infinity;
 
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const radius = Math.min(rect.width, rect.height) * 0.525;
+    const render = (now = 0) => {
+      if (running) frameRef.current = requestAnimationFrame(render);
+      if (now - last < frameMs) return;
+      last = now;
 
-      ctx.font = "12px monospace";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
+      ctx.clearRect(0, 0, width, height);
 
-      const step = 12;
-      const points: { x: number; y: number; z: number; char: string }[] = [];
+      const centerX = width / 2;
+      const centerY = height / 2;
+      const radius = Math.min(width, height) * 0.525;
+
+      const points: { x: number; y: number; z: number; charIndex: number }[] = [];
 
       // Generate sphere points
-      for (let phi = 0; phi < Math.PI * 2; phi += 0.15) {
-        for (let theta = 0; theta < Math.PI; theta += 0.15) {
+      for (let phi = 0; phi < Math.PI * 2; phi += step) {
+        for (let theta = 0; theta < Math.PI; theta += step) {
           const x = Math.sin(theta) * Math.cos(phi + time * 0.5);
           const y = Math.sin(theta) * Math.sin(phi + time * 0.5);
           const z = Math.cos(theta);
@@ -68,7 +94,7 @@ export function AnimatedSphere() {
             x: centerX + newX * radius,
             y: centerY + newY * radius,
             z: finalZ,
-            char: chars[charIndex],
+            charIndex,
           });
         }
       }
@@ -78,19 +104,29 @@ export function AnimatedSphere() {
 
       // Draw points
       points.forEach((point) => {
-        const alpha = 0.2 + (point.z + 1) * 0.4;
-        ctx.fillStyle = `rgba(0, 0, 0, ${alpha})`;
-        ctx.fillText(point.char, point.x, point.y);
+        ctx.globalAlpha = 0.2 + (point.z + 1) * 0.4;
+        ctx.drawImage(
+          atlas,
+          point.charIndex * cell * 2,
+          0,
+          cell * 2,
+          cell * 2,
+          point.x - cell / 2,
+          point.y - cell / 2,
+          cell,
+          cell
+        );
       });
+      ctx.globalAlpha = 1;
 
-      time += 0.02;
-      if (running) frameRef.current = requestAnimationFrame(render);
+      // Incremento doppio rispetto a 60fps per mantenere la stessa velocità
+      time += 0.04;
     };
 
     const start = () => {
       if (running) return;
       running = true;
-      render();
+      frameRef.current = requestAnimationFrame(render);
     };
     const stop = () => {
       running = false;
